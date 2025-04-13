@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة تقسيم IP المُعاد بناؤها</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Font (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>حاسبة تقسيم الشبكة (IP Subnet Calculator)</h1>
+        </header>
+
+        <main>
+            <form id="ip-calculator-form">
+                <div class="form-group">
+                    <label for="ip-address">عنوان IP:</label>
+                    <input type="text" id="ip-address" name="ip-address" placeholder="مثال: 172.16.30.5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subnet-input">قناع الشبكة / CIDR (اختياري):</label>
+                    <input type="text" id="subnet-input" name="subnet-input" placeholder="مثال: 255.255.0.0 أو /16">
+                    <div class="option-group">
+                        <input type="checkbox" id="use-default-mask" name="use-default-mask">
+                        <label for="use-default-mask">استخدم القناع الافتراضي إذا ترك فارغاً</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-calculate">احسب معلومات الشبكة</button>
+            </form>
+
+            <div id="error-display" class="error-message" role="alert" aria-live="assertive" style="display: none;">
+                <!-- رسائل الخطأ ستظهر هنا -->
+            </div>
+
+            <section id="results-section" class="results-area" aria-labelledby="results-heading" style="display: none;">
+                <h2 id="results-heading">نتائج تحليل الشبكة:</h2>
+                <dl class="results-list">
+                    <dt>عنوان الشبكة (Network ID):</dt>
+                    <dd id="network-id-result">-</dd>
+
+                    <dt>قناع الشبكة المستخدم:</dt>
+                    <dd id="subnet-mask-result">-</dd>
+
+                    <dt>أول IP قابل للاستخدام:</dt>
+                    <dd id="first-ip-result">-</dd>
+
+                    <dt>آخر IP قابل للاستخدام:</dt>
+                    <dd id="last-ip-result">-</dd>
+
+                    <dt>عنوان البث (Broadcast):</dt>
+                    <dd id="broadcast-result">-</dd>
+
+                    <dt>الشبكة التالية (Next Network):</dt>
+                    <dd id="next-network-result">-</dd>
+
+                    <dt>عدد الأجهزة المضيفة:</dt>
+                    <dd id="hosts-count-result">-</dd>
+
+                    <dt>البوابة الافتراضية (مقترح):</dt>
+                    <dd id="gateway-result">-</dd>
+                </dl>
+            </section>
+        </main>
+
+        <footer>
+            <p>تصميم وتطوير بواسطة الذكاء الاصطناعي</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+                      </html>
