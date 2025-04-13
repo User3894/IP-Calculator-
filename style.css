@@ -1,0 +1,243 @@
+/* --- General Styles & Reset --- */
+:root {
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #6c757d; /* Gray */
+    --background-color: #f8f9fa; /* Light Gray */
+    --container-bg: #ffffff; /* White */
+    --text-color: #343a40; /* Dark Gray */
+    --heading-color: #0056b3; /* Darker Blue */
+    --border-color: #dee2e6; /* Light Gray Border */
+    --error-bg: #f8d7da;
+    --error-color: #721c24;
+    --error-border: #f5c6cb;
+    --success-color: #198754; /* Green */
+    --font-family: 'Cairo', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    direction: rtl;
+}
+
+/* --- Layout & Container --- */
+.container {
+    background-color: var(--container-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px; /* Slightly wider */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+h1 {
+    color: var(--heading-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+h2 {
+    color: var(--heading-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+main {
+    margin-bottom: 2rem;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+/* --- Form Styles --- */
+#ip-calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Spacing between form groups */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 700; /* Bolder labels */
+    color: var(--text-color);
+}
+
+.form-group input[type="text"] {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-group input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.option-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.option-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    accent-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.option-group label {
+    margin-bottom: 0;
+    font-weight: 400; /* Normal weight for checkbox label */
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-calculate {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--container-bg);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-family: var(--font-family);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: 1rem; /* Space above button */
+}
+
+.btn-calculate:hover {
+    background-color: var(--heading-color);
+}
+
+.btn-calculate:active {
+    transform: scale(0.98);
+}
+
+/* --- Results Area --- */
+.results-area {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.results-list {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Label column, Value column */
+    gap: 0.8rem 1.5rem; /* Row gap, Column gap */
+    margin-top: 1rem;
+}
+
+.results-list dt { /* Term (Label) */
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: left; /* Align labels to the left */
+    grid-column: 1 / 2;
+}
+
+.results-list dd { /* Description (Value) */
+    color: var(--primary-color);
+    font-family: monospace, var(--font-family); /* Monospace for IPs */
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: right; /* Align values to the right */
+    direction: ltr; /* Ensure LTR for IPs/numbers */
+    word-break: break-all;
+    grid-column: 2 / 3;
+}
+
+#gateway-result {
+    color: var(--success-color); /* Highlight gateway */
+}
+
+/* --- Error Message --- */
+.error-message {
+    background-color: var(--error-bg);
+    color: var(--error-color);
+    border: 1px solid var(--error-border);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .results-list {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 0.5rem 0;
+    }
+
+    .results-list dt {
+        grid-column: 1 / -1;
+        text-align: right; /* Align labels right */
+        margin-bottom: 0.1rem;
+    }
+
+    .results-list dd {
+        grid-column: 1 / -1;
+        text-align: right; /* Align values right */
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+    }
+}
